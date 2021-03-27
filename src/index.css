@@ -1,13 +1,152 @@
+*{
+  padding:0;
+}
 body {
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#e9e9e9
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1{
+  margin:0 0 3rem 0;
+  background: linear-gradient(to left,#0d70f1, #35c6f1);
+  text-align:center;
+  padding:1.2rem 0;
+  color:#fff;
+  font-size:60px;
+  font-family: 'Fredoka One', cursive;
+}
+
+
+.container{
+  width:95%;
+  max-width:1200px;
+  margin: 10px auto;
+}
+
+.row{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+.col-3{
+  padding:0 10px;
+  width: 30%;
+  margin:10px auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.col-6{
+  padding:0 10px;
+  width: 100%;
+  margin:10px auto;
+}
+
+@media (min-width:768px){
+  .col-3{
+    flex-grow: 1;
+    width: 18%;
+  }
+  .col-6{
+    width: 45%;
+  }
+
+}
+
+.img-card{
+  width:100%;
+}
+
+.card{
+  display: flex;
+  display: -webkit-flex;
+  background:#3e3e3e;
+  color:#fff;
+}
+a{
+  color:#fff;
+  text-decoration: none;
+}
+.card-body{
+  padding:0 12px 9px;
+}
+.info-peli{
+  display: flex;
+  justify-content: space-between;
+  color:#e3e3e3;
+}
+
+.details{
+  border:1px solid #cfcfcf;
+  border-radius:8px;
+}
+
+.details img{
+  width:100%;
+  max-width:390px;
+  display:block;
+  margin:0 auto;
+}
+.details h2{
+  font-size:45px;
+  margin:0 0 15px;
+  color:#0d70f1
+}
+
+.details p svg{
+  color:#0d70f1
+}
+.genres{
+  list-style:none;
+  display:flex;
+}
+.genres li{
+  margin:0 8px 0 0 ;
+}
+.genres li:first-of-type{
+  font-weight: bold;
+}
+
+.cast{
+  list-style:none;
+}
+.cast li span{
+  font-weight:bold;
+}
+
+.rate-info, .extra-info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.extra-info button{
+  padding: 7px 15px;
+  color:#000;
+  height:fit-content;
+  background:#35c6f1;
+  border-radius:4px;
+  border:none;
+  font-weight:bold;
+}
+
+.rate{
+  display:flex;
+  list-style:none;
+}
+.rate li svg{
+  cursor:pointer;
 }

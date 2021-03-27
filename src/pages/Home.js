@@ -1,0 +1,15 @@
+import React from 'react';
+import MovieList from '../components/MovieList';
+
+export default function Home() {
+    
+    return(
+        <>
+            <section className="container">
+                <h2>Últimas películas</h2>
+                <MovieList />
+
+            </section>
+        </>
+    )
+};
