@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import API from '../config/API';
 import Auth from '../config/Auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,28 +11,41 @@ const Rate = ({id}) => {
     
     const userRate = (e) => {
         e.preventDefault();
-        
-
         Auth().then(resp => {
             setUser(resp.guest_session_id)
-            console.log(newRate);
-            const data = {value:newRate}
-            API('rating',id,data,user).then(res=>{
-                console.log(res);
-                if(res.success){
-                    for(let i=2; i<=newRate; i+=2){
-                        document.querySelectorAll('.rate li').forEach(lista => {
-                            
-                            if(lista.getAttribute('id') == i){
-                                lista.classList.add('rate-color')
-                            }
-                        })
-                    }
-
-                }
-            })
+            subirRate()
         })
     }
+
+    const subirRate = ()=>{
+        const data = {value:newRate}
+        API('rating',id,data,user).then(res=>{
+            console.log(res);
+            if(res.success){
+                for(let i=2; i<=newRate; i+=2){
+                    document.querySelectorAll('.rate li').forEach(lista => {
+                        
+                        if(lista.getAttribute('id') == i){
+                            lista.classList.add('rate-color')
+                        }
+                    })
+                }
+
+            }
+        })
+    }
+
+    const refreshClass = ()=>{
+        document.querySelectorAll('.rate li').forEach(lista => {
+                            
+                lista.classList.remove('rate-color')
+            
+        })
+    }
+
+    useEffect(()=>{
+        refreshClass()
+    },[id])
     
     const botones = [2,4,6,8,10]
 
