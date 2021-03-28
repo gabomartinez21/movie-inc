@@ -4,6 +4,8 @@ import API from '../config/API';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt, faStar} from '@fortawesome/free-solid-svg-icons';
 import Similars from '../components/Similares';
+import Rate from '../components/Rate';
+
 
 export default function Detail() {
     const { id } = useParams();
@@ -32,7 +34,6 @@ export default function Detail() {
         })
     }
 
-
     const getCast = ()=>{
         API('credits', id).then(res=>{
             setCast(res.cast)
@@ -46,12 +47,8 @@ export default function Detail() {
 
     useEffect(()=>{
         getCast()
-        console.log(cast);
     }, [id])
     
-    const vote = (rango)=>{
-        console.log(rango)
-    }
     return(
         <div className="container">
             <div className="details">
@@ -63,15 +60,7 @@ export default function Detail() {
                         <h2>{info.title}</h2>
                         <div className="rate-info">
                             <p><FontAwesomeIcon icon={faStar} /> {info.rating} rate</p>
-                            
-                            <ul className="rate">
-                                <li>Vote</li>
-                                <li><button onClick={vote} value="2"><FontAwesomeIcon icon={faStar} onClick={vote(2)}/></button></li>
-                                <li><button onClick={vote} value="2"><FontAwesomeIcon icon={faStar} onClick={vote(4)}/></button></li>
-                                <li><button onClick={vote} value="2"><FontAwesomeIcon icon={faStar} onClick={vote(6)}/></button></li>
-                                <li><button onClick={vote} value="2"><FontAwesomeIcon icon={faStar} onClick={vote(8)}/></button></li>
-                                <li><button onClick={vote} value="2"><FontAwesomeIcon icon={faStar} onClick={vote(10)}/></button></li>
-                            </ul>
+                            <Rate id={id}/>
                         </div>
                         <div className="extra-info">
                             <p><FontAwesomeIcon icon={faCalendarAlt} /> {info.date}</p>
@@ -79,7 +68,7 @@ export default function Detail() {
 
                         </div>
                         <ul className="genres">
-                            <li>Géneros</li>
+                            <li>Genres</li>
                             {info.genres.map(gen=>(
                                 <li key={gen.id}>{gen.name}</li>
                             ))}

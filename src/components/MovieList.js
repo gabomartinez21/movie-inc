@@ -9,7 +9,7 @@ const MovieList = () => {
     const getData = () =>{
         API('discover').then(data => {
             const newPelis = []
-            data.results.map(res => {
+            data.results.forEach(res => {
                 newPelis.push({
                         id:res.id,
                         title:res.title,

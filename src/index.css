@@ -147,6 +147,16 @@ a{
   display:flex;
   list-style:none;
 }
+.rate li button{
+  border:none;
+}
+.rate li{
+  margin:0 6px;
+}
 .rate li svg{
   cursor:pointer;
+  transition:all .4s ease;
+}
+.rate li svg:hover, .rate-color svg{
+  color:#0d70f1
 }

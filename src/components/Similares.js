@@ -10,7 +10,7 @@ const Similars = ({id}) => {
     const getSimilars = () => {
         API('similar',id).then(res=>{
             const newPelis = []
-            res.results.map(movie => {
+            res.results.forEach(movie => {
                 newPelis.push({
                         id:movie.id,
                         title:movie.title,
