@@ -5,10 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar} from '@fortawesome/free-solid-svg-icons';
 
 const Rate = ({id}) => {
-
     const [newRate, setNewRate ] = useState(0)
     const [user, setUser] = useState('')
-    
     const userRate = (e) => {
         e.preventDefault();
         Auth().then(resp => {
@@ -16,11 +14,9 @@ const Rate = ({id}) => {
             subirRate()
         })
     }
-
     const subirRate = ()=>{
         const data = {value:newRate}
         API('rating',id,data,user).then(res=>{
-            console.log(res);
             if(res.success){
                 for(let i=2; i<=newRate; i+=2){
                     document.querySelectorAll('.rate li').forEach(lista => {
@@ -34,7 +30,6 @@ const Rate = ({id}) => {
             }
         })
     }
-
     const refreshClass = ()=>{
         document.querySelectorAll('.rate li').forEach(lista => {
                             

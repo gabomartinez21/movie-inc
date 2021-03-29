@@ -13,7 +13,6 @@ export default async function API(type, id, data, auth){
             body:JSON.stringify(data)
         });
         const poll = await req.json();
-
         return poll;
     }else if(type === 'discover'){
         url = url + `${type}/movie?api_key=${api_key}`;
@@ -22,8 +21,6 @@ export default async function API(type, id, data, auth){
     }else{
         url = url + `${type}/${id}?api_key=${api_key}`
     }
-
-
     let request = await fetch(url);
     
     const res = await request.json();
